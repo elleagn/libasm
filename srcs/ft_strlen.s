@@ -14,6 +14,11 @@ ft_strlen:
 
     push    rbp             ; save rbp as it is a proteced register
     mov     rbp, rsp        ; define the new stack base
-    push    edi             ; save edi so I can increment it
+    push    rdi             ; save edi so I can increment it
 
-    mov     eax, -1         ; initialize counter, UINT_MAX and -1 are the same modulo UINT_MAX + 1
+    or      rcx, -1         ; initialize counter, UINT_MAX and -1 are the same modulo UINT_MAX + 1
+    ; NOT TRUE CHANGE THIS
+    xor     rax, rax        ; set eax to zero (for comparison)
+
+    rpne scasb              ; compare eax against value pointed at by edi, repeat until ecx = 0 or zf = 1
+    not
