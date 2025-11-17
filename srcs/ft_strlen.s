@@ -16,9 +16,17 @@ ft_strlen:
     mov     rbp, rsp        ; define the new stack base
     push    rdi             ; save edi so I can increment it
 
-    or      rcx, -1         ; initialize counter, UINT_MAX and -1 are the same modulo UINT_MAX + 1
-    ; NOT TRUE CHANGE THIS
+    or      rcx, -1         ; unsigned int so -1 is the same as UINT_MAX
+
     xor     rax, rax        ; set eax to zero (for comparison)
 
     rpne scasb              ; compare eax against value pointed at by edi, repeat until ecx = 0 or zf = 1
-    not
+    not     rcx             ; rcx = UINT_MAX - len and you can get len with not rcx (rcx + not rcx = UINT_MAX)
+    mov     rcx, rax        ; return value for numbers is in eax
+
+    pop rdi                 ; return rdi to its original value
+    pop rbp                 ; return stack to its original base
+    ret                     ; finish function
+
+
+
