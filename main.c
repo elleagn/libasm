@@ -1,8 +1,13 @@
 #include "libasm.h"
 
 void test_strlen() {
- assert(ft_strlen("blbl") == 4);
- printf("Test ft_strlen(\"blbl\") == 4 : "GREEN"OK!\n"RESET);
+    size_t res;
+    printf("Test ft_strlen(\"blbl\") == 4 :");
+    res = ft_strlen("blbl");
+    if (res == 4)
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%lu)\n"RESET, res);
  assert(ft_strlen("") == 0);
  printf("Test ft_strlen(\"\") == 0 : "GREEN"OK!\n"RESET);
  assert(ft_strlen("b") == 1);

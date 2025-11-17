@@ -20,9 +20,10 @@ ft_strlen:
 
     xor     rax, rax        ; set eax to zero (for comparison)
 
-    rpne scasb              ; compare eax against value pointed at by edi, repeat until ecx = 0 or zf = 1
+    repne scasb             ; compare rax against value pointed at by rdi, repeat until rcx = 0 or zf = 1
     not     rcx             ; rcx = UINT_MAX - len and you can get len with not rcx (rcx + not rcx = UINT_MAX)
-    mov     rcx, rax        ; return value for numbers is in eax
+    mov     rax, rcx        ; return value for numbers is in eax
+    dec     rax             ; decrement rax because it counts the null char
 
     pop rdi                 ; return rdi to its original value
     pop rbp                 ; return stack to its original base

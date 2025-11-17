@@ -28,4 +28,4 @@ re: fclean all
 
 test: all
 	cc -Wall -Werror -c main.c -o objects/main.o
-	cc $(OBJ) main.o -o test
+	cc $(OBJ) $(OBJ_DIR)/main.o -o test
