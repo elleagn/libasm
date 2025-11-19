@@ -24,13 +24,13 @@ while:
     cmpsb           ; compare the bytes + increment
     jz  while           ; continue if bytes are equal (zf == 1)
 
-    mov al, byte [rdi - 1]
-    sub al, byte [rsi - 1]
+    mov al, byte [rsi - 1]
+    sub al, byte [rdi - 1]
     ret
 
 end_string:
 
-    mov al, byte [rdi]
-    sub al, byte [rsi]
+    movsx rax, byte [rdi]
+    movsx rcx, byte [rsi]
+    sub rax, rcx
     ret
-

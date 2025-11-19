@@ -13,8 +13,6 @@ segment .text   ; section that contains executable instructions
 global  ft_strcpy ; global so it can be used by my C program
 
 ft_strcpy:
-    push    rbp                 ; save rbp as it is a protected register
-    mov     rbp, rsp            ; define the new stack base
     push    rdi                 ; save rsi (second argument) so I can return it
 
 while:
@@ -26,6 +24,5 @@ while:
     jnz     while               ; restart from while if zf != 1
     mov     [rdi], byte 0        ; terminating null byte
 
-    pop rax                     ; return rdi to its original value
-    pop rbp                     ; return stack to its original base
+    pop rax                     ; pop and return rdi
     ret                         ; finish function

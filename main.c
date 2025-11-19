@@ -66,12 +66,34 @@ void test_strcpy() {
     }
 }
 
+void test_strcmp() {
+    int res;
+
+    printf("Test ft_strcmp(\"blbl\",\"blbl\"): ");
+    res = ft_strcmp("blbl", "blbl");
+    if (res == 0)
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("Test ft_strcmp(\"\",\"blbl\"): ");
+    res = ft_strcmp("", "blbl");
+    if (res == strcmp("", "blbl"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+}
+
 int main(void) {
     printf(CYAN"\nft_strlen:\n\n"RESET);
     test_strlen();
 
     printf(CYAN"\nft_strcpy:\n\n"RESET);
     test_strcpy();
+
+    printf(CYAN"\nft_strcmp:\n\n"RESET);
+    test_strcmp();
     printf("\n");
     return (0);
 }
