@@ -15,8 +15,7 @@ global  ft_strcpy ; global so it can be used by my C program
 ft_strcpy:
     push    rbp                 ; save rbp as it is a protected register
     mov     rbp, rsp            ; define the new stack base
-    push    rdi                 ; save rdi (first argument) so I can increment it
-    push    rsi                 ; save rsi (second argument) so I can increment it
+    push    rdi                 ; save rsi (second argument) so I can return it
 
 while:
     mov     al, byte [rsi]      ; copies the value pointed at by rsi to al
@@ -27,7 +26,6 @@ while:
     jnz     while               ; restart from while if zf != 1
     mov     [rdi], byte 0        ; terminating null byte
 
-    pop rsi                     ; return the pointer to the beginning of the string
-    pop rdi                     ; return rdi to its original value
+    pop rax                     ; return rdi to its original value
     pop rbp                     ; return stack to its original base
     ret                         ; finish function

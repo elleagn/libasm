@@ -34,31 +34,32 @@ void test_strlen() {
 
 void test_strcpy() {
     char buf[1000];
+    char *res;
 
     printf("Test strcpy(\"\"): ");
-    ft_strcpy(buf, "");
-    if (strcmp(buf, "")) {
+    res = ft_strcpy(buf, "");
+    if (strcmp(res, "")) {
         printf(RED"error (%s)\n"RESET, buf);
     } else {
         printf(GREEN"OK!\n"RESET);
     }
     printf("Test strcpy(\"clkhCSNALJ\"): ");
-    ft_strcpy(buf, "clkhCSNALJ");
-    if (strcmp(buf, "clkhCSNALJ")) {
+    res = ft_strcpy(buf, "clkhCSNALJ");
+    if (strcmp(res, "clkhCSNALJ")) {
         printf(RED"error (%s)\n"RESET, buf);
     } else {
         printf(GREEN"OK!\n"RESET);
     }
     printf("Test strcpy(\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"): ");
-    ft_strcpy(buf, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    if (strcmp(buf, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")) {
+    res = ft_strcpy(buf, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    if (strcmp(res, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")) {
         printf(RED"error (%s)\n"RESET, buf);
     } else {
         printf(GREEN"OK!\n"RESET);
     }
     printf("Test strcpy(\"asdfgh15516516@#$^&*\"): ");
-    ft_strcpy(buf, "asdfgh15516516@#$^&*");
-    if (strcmp(buf, "asdfgh15516516@#$^&*")) {
+    res = ft_strcpy(buf, "asdfgh15516516@#$^&*");
+    if (strcmp(res, "asdfgh15516516@#$^&*")) {
         printf(RED"error (%s)\n"RESET, buf);
     } else {
         printf(GREEN"OK!\n"RESET);
