@@ -27,5 +27,5 @@ fclean: clean
 re: fclean all
 
 test: all
-	cc -Wall -Werror -c main.c -o objects/main.o
+	cc -Wall -Werror -Wextra -c main.c -o objects/main.o
 	cc $(OBJ) $(OBJ_DIR)/main.o -o test
