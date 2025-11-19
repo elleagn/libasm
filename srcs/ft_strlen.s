@@ -12,10 +12,6 @@ global  ft_strlen ; global so it can be used by my C program
 
 ft_strlen:
 
-    push    rbp             ; save rbp as it is a proteced register
-    mov     rbp, rsp        ; define the new stack base
-    push    rdi             ; save edi so I can increment it
-
     or      rcx, -1         ; unsigned int so -1 is the same as UINT_MAX
 
     xor     rax, rax        ; set eax to zero (for comparison)
@@ -26,8 +22,6 @@ ft_strlen:
     mov     rax, rcx        ; return value for numbers is in eax
     dec     rax             ; decrement rax because it counts the null char
 
-    pop rdi                 ; return rdi to its original value
-    pop rbp                 ; return stack to its original base
     ret                     ; finish function
 
 
