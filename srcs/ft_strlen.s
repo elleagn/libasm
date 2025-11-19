@@ -20,6 +20,7 @@ ft_strlen:
 
     xor     rax, rax        ; set eax to zero (for comparison)
 
+    cld                     ; clear direction flag so that rdi increments
     repne scasb             ; compare rax against value pointed at by rdi, repeat until rcx = 0 or zf = 1
     not     rcx             ; rcx = UINT_MAX - len and you can get len with not rcx (rcx + not rcx = UINT_MAX)
     mov     rax, rcx        ; return value for numbers is in eax

@@ -18,6 +18,6 @@
 // MANDATORY
 
 extern size_t   ft_strlen(const char *s);
-extern char     *strcpy(char *dest, const char *src);
+extern char     *ft_strcpy(char *dest, const char *src);
 
 #endif

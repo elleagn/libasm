@@ -33,6 +33,7 @@ void test_strlen() {
 }
 
 int main(void) {
+    printf(CYAN"\nft_strlen:\n\n"RESET);
     test_strlen();
     return (0);
 }
