@@ -1,7 +1,7 @@
 NAME = libasm.a
 ASM = nasm
 ASMFLAGS = -f elf64
-SRC_FILES = ft_strlen.s
+SRC_FILES = ft_strlen.s ft_strcpy.s
 OBJ_DIR = objects
 OBJ = $(SRC_FILES:%.s=$(OBJ_DIR)/%.o)
 SRC_DIR = srcs

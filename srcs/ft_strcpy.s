@@ -18,9 +18,19 @@ ft_strcpy:
     push    rsi             ; save rsi (second argument) so I can increment it
 
 
-    cmp     [rdi], 0        ; compare the value pointed at by rdi (first char) with 0
+    cmp     byte [rdi], 0        ; compare the value pointed at by rdi (first char) with 0
     jz      end_while       ; jump to end_while if zflag = 1 (ie cmp returned 0)
 
 while:
+    cld                     ; clears the direction flags
     movsb                   ; move the byte in rdi to rsi + increment
-    cmp     [rdi], 0        ; compare the value pointed at by rdi with 0
+    cmp     byte [rdi], 0        ; compare the value pointed at by rdi with 0
+    jnz     while           ; restart from while if zf != 1
+
+end_while:
+    mov     byte [rsi], 0        ; terminating null byte
+
+    pop rsi                 ; return the pointer to the beginning of the string
+    pop rdi                 ; return rdi to its original value
+    pop rbp                 ; return stack to its original base
+    ret                     ; finish function
