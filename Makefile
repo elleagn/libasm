@@ -27,8 +27,8 @@ fclean: clean
 re: fclean all
 
 test: re
-	cc -Wall -Werror -Wextra -c main.c -o objects/main.o
-	cc $(OBJ) $(OBJ_DIR)/main.o -o test
+	clang -Wall -Werror -Wextra -c main.c -o objects/main.o
+	clang $(OBJ) $(OBJ_DIR)/main.o -o test
 	./test
 
 .PHONY: all clean fclean re test valgrind

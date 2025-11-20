@@ -21,7 +21,7 @@ ft_write:
     syscall                         ; executes the syscall corresponding to eax
     neg         rax
     push        rax
-    call        __errno_location
+    call        __errno_location wrt ..plt
     pop         rcx
     mov         [rax], rcx
     pop rbp                     ; return base to its initial address
