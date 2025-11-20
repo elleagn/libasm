@@ -83,6 +83,20 @@ void test_strcmp() {
     else
         printf(RED"error (%i)\n"RESET, res);
 
+    printf("Test ft_strcmp(\"blbl\", \"\"): ");
+    res = ft_strcmp("blbl", "");
+    if (res == strcmp("blbl", ""))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("Test ft_strcmp(\"\", \"\"): ");
+    res = ft_strcmp("", "");
+    if (res == strcmp("", ""))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
 }
 
 int main(void) {
