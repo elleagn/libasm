@@ -1,7 +1,7 @@
 NAME = libasm.a
 ASM = nasm
 ASMFLAGS = -f elf64
-SRC_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRC_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s
 OBJ_DIR = objects
 OBJ = $(SRC_FILES:%.s=$(OBJ_DIR)/%.o)
 SRC_DIR = srcs
@@ -30,10 +30,5 @@ test: re
 	cc -Wall -Werror -Wextra -c main.c -o objects/main.o
 	cc $(OBJ) $(OBJ_DIR)/main.o -o test
 	./test
-
-valgrind: re
-	cc -Wall -Werror -Wextra -c main.c -o objects/main.o
-	cc $(OBJ) $(OBJ_DIR)/main.o -o test
-	valgrind ./test
 
 .PHONY: all clean fclean re test valgrind

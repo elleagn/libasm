@@ -109,5 +109,8 @@ int main(void) {
     printf(CYAN"\nft_strcmp:\n\n"RESET);
     test_strcmp();
     printf("\n");
+
+    printf("%i", ft_write(10, "blbl\n", 5));
+    perror("write");
     return (0);
 }

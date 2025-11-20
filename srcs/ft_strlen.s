@@ -13,7 +13,6 @@ global  ft_strlen ; global so it can be used by my C program
 ft_strlen:
 
     or      rcx, -1         ; unsigned int so -1 is the same as UINT_MAX
-
     xor     rax, rax        ; set eax to zero (for comparison)
 
     cld                     ; clear direction flag so that rdi increments
