@@ -10,7 +10,7 @@
 
 segment .text                               ; section that contains executable instructions
 
-global  ft_read                            ; global so it can be used by my C program
+global  ft_read                             ; global so it can be used by my C program
 extern  __errno_location                    ; function that returns errno location
 
 ft_read:
