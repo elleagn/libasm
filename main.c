@@ -115,6 +115,37 @@ void    test_write() {
     printf("File valid_file opened with fd %i\n", fd);
     res = ft_write(fd, "jashckjhscjsch\n", 15);
     printf("Result: %d\n", res);
+    close(fd);
+
+}
+
+void    test_read() {
+    int res;
+    char buf[60];
+    bzero(buf, 60);
+
+    printf("ft_read(0, buf, 0)");
+    res = ft_read(0, buf, 0);
+    printf("\nResult: %d\n", res);
+
+    printf("Command line (10 char)\n");
+    res = ft_read(0, buf, 10);
+    printf("buf: %s\n", buf);
+    printf("Result: %d\n", res);
+    bzero(buf, 60);
+
+    printf("Invalid fd: \n");
+    res = ft_read(10, buf, 3);
+    perror("ft_read");
+    printf("Result: %d\n", res);
+
+    int fd = open("valid_file", O_CREAT | O_RDONLY, 0644);
+    printf("File valid_file opened with fd %i\n", fd);
+    res = ft_read(fd, buf, 15);
+    printf("buf: %s", buf);
+    printf("Result: %d\n", res);
+    bzero(buf, 60);
+    close(fd);
 
 }
 
@@ -131,6 +162,10 @@ int main(void) {
 
     printf(CYAN"\nft_write:\n\n"RESET);
     test_write();
+    printf("\n");
+
+    printf(CYAN"\nft_write:\n\n"RESET);
+    test_read();
     printf("\n");
 
     return (0);
