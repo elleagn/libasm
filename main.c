@@ -152,7 +152,12 @@ void    test_read() {
 void test_strdup() {
     char *str;
 
+    printf("ft_stdrup(\"blbl\"): ");
     str = ft_strdup("blbl");
+    printf("%s\n", str);
+    free(str);
+    printf("ft_stdrup(\"\"): ");
+    str = ft_strdup("");
     printf("%s\n", str);
     free(str);
 }
