@@ -99,6 +99,25 @@ void test_strcmp() {
 
 }
 
+void    test_write() {
+    int res;
+
+    printf("ft_write(1, \"\", 0)");
+    res = ft_write(1, "", 0);
+    printf("\nResult: %d\n", res);
+
+    printf("Invalid fd: \n");
+    res = ft_write(10, "adf", 3);
+    perror("ft_write");
+    printf("Result: %d\n", res);
+
+    int fd = open("valid_file", O_CREAT | O_WRONLY, 0644);
+    printf("File valid_file opened with fd %i\n", fd);
+    res = ft_write(fd, "jashckjhscjsch\n", 15);
+    printf("Result: %d\n", res);
+
+}
+
 int main(void) {
     printf(CYAN"\nft_strlen:\n\n"RESET);
     test_strlen();
@@ -110,7 +129,9 @@ int main(void) {
     test_strcmp();
     printf("\n");
 
-    printf("%i", ft_write(10, "blbl\n", 5));
-    perror("write");
+    printf(CYAN"\nft_write:\n\n"RESET);
+    test_write();
+    printf("\n");
+
     return (0);
 }
