@@ -164,7 +164,7 @@ int main(void) {
     test_write();
     printf("\n");
 
-    printf(CYAN"\nft_write:\n\n"RESET);
+    printf(CYAN"\nft_read:\n\n"RESET);
     test_read();
     printf("\n");
 

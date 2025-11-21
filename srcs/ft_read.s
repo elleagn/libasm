@@ -1,36 +1,36 @@
-;   Program: ft_write
+;   Program: ft_read
 ;
-;   Write to a file descriptor
+;   Read from a file descriptor
 ;
-;   Input:  fd - file descriptor referring the file where to write
-;           buf - pointer to the source buffer
-;           count - number of bytes to write
+;   Input:  fd - file descriptor referring the file to read from
+;           buf - pointer to the buffer to store data
+;           count - number of bytes to read
 ;
 ;   Output: the number of bytes in the string pointed to by s
 
 segment .text                               ; section that contains executable instructions
 
-global  ft_write                            ; global so it can be used by my C program
+global  ft_read                            ; global so it can be used by my C program
 extern  __errno_location                    ; function that returns errno location
 
-ft_write:
+ft_read:
     push        rbp                         ; save the stack (protected register)
     mov         rbp, rsp                    ; new base pointer
     sub         rsp, 16                     ; allocates space for local variables
 
-    mov         rax, 1                      ; write syscall number is 1
+    mov         rax, 0                      ; read syscall number is 1
     syscall                                 ; executes the syscall corresponding to eax
     xor         rcx, rcx                    ; zeroes the register for comparison
     cmp         eax, ecx                    ; test if there was an error
     jns         prolog                      ; if positive nbytes is already in rax, we just have to cleanup
 
-
-    neg         rax                         ; write returns nb of bytes read or -errno
+error:
+    neg         rax                         ; read returns nb of bytes read or -errno
     mov         [rsp + 12], eax             ; relative position to rsp (int is 4 bytes + stack grows down)
     call        __errno_location wrt ..plt  ; you need to add this for shared libraries to avoid pie errors
     mov         ecx, dword [rsp + 12]       ; dword = 32bits = 4 bytes
     mov         [rax], ecx                  ; move ecx to errno's address
-    mov         rax, -1                     ; write returns -1 on error
+    mov         rax, -1                     ; read returns -1 on error
 
 
 prolog:
