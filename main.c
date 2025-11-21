@@ -128,11 +128,11 @@ void    test_read() {
     res = ft_read(0, buf, 0);
     printf("\nResult: %d\n", res);
 
-    printf("Command line (10 char)\n");
-    res = ft_read(0, buf, 10);
-    printf("buf: %s\n", buf);
-    printf("Result: %d\n", res);
-    bzero(buf, 60);
+    // printf("Command line (10 char)\n");
+    // res = ft_read(0, buf, 10);
+    // printf("buf: %s\n", buf);
+    // printf("Result: %d\n", res);
+    // bzero(buf, 60);
 
     printf("Invalid fd: \n");
     res = ft_read(10, buf, 3);
@@ -147,6 +147,14 @@ void    test_read() {
     bzero(buf, 60);
     close(fd);
 
+}
+
+void test_strdup() {
+    char *str;
+
+    str = ft_strdup("blbl");
+    printf("%s\n", str);
+    free(str);
 }
 
 int main(void) {
@@ -166,6 +174,10 @@ int main(void) {
 
     printf(CYAN"\nft_read:\n\n"RESET);
     test_read();
+    printf("\n");
+
+    printf(CYAN"\nft_strdup:\n\n"RESET);
+    test_strdup();
     printf("\n");
 
     return (0);

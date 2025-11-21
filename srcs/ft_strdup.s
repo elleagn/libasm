@@ -12,6 +12,7 @@ global  ft_strdup
 
 extern  malloc
 extern  ft_strlen
+extern  ft_strcpy
 
 ft_strdup:
 
@@ -20,14 +21,24 @@ ft_strdup:
     mov         rbp, rsp
     sub         rsp, 16
 
-;   Getting the string length
+;   Getting the string length for malloc
     mov         [rsp + 8], rdi  ; save the string address
     call        ft_strlen       ; get the string length
     mov         rax, rdi        ; give the string size as argument for malloc
     inc         rax             ; add space for the terminating null byte
 
 ;   Allocating space with malloc
+    call        malloc
+    xor         rcx, rcx
+    cmp         rax, rcx
+    jz          prolog
+    mov         [rsp], rax
 
+;   Copying the string into the allocated memory with ft_strcmpy
+    mov         rdi, rax
+    mov         rsi, [rsp + 8]
+    call        ft_strcpy
+    mov         rax, [rsp]
 
 prolog:
     add         rsp, 16                     ; clear the stack
