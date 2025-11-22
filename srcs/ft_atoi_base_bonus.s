@@ -12,6 +12,7 @@ segment .text
 global ft_atoi_base
 
 extern ft_strlen
+extern ft_isspace
 
 
 ; --> base in rbx

@@ -18,11 +18,11 @@ ft_isspace:
     cmp dil, 9
     jl  space   ; jump to space case if dil is lower than 9
     cmp dil, 13
-    jg  space   ; jump to space case if dil is greater than 13
+    jg  not_space   ; jump to space case if dil is greater than 13
 
-    mov rax, 0  ; return 0 if none of the conditions was met
+    mov rax, 1  ; return 1 if it's a whitespace character
     ret
 
-space:
-    mov rax, 1  ; return 1 if it's a whitespace character
+not_space:
+    mov rax, 1  ; return 0 if one of the conditions was met
     ret
