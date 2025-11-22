@@ -13,7 +13,8 @@ global ft_atoi_base
 
 extern ft_strlen
 extern ft_isspace
-
+extern ft_write
+extern ft_isalnum
 
 ; --> base in rbx
 ; --> nptr idk
@@ -36,29 +37,50 @@ find_index:                 ; find_index(str, char, strlen)
 
 ; Determines the base length
 ; If the base is invalid it returns 0
-get_base_len:             ; size_t check_base_len(char *base)
+get_base_len:          ; size_t check_base_len(char *base)
     push    rbx
-    xor     rax, rax
     xor     r12, r12
+    xor     rax, rax
+
 while_base:
+    cmp     byte [rbx], 0
+    jz      end_base
     mov     dil, byte [rbx]
-    call    is_space
+    call    ft_isalnum
     cmp     rax, 0
-    jnz     invalid_base
+    jz     invalid_base
+    inc     r12
+    inc     rbx
+    jmp     while_base
 
+end_base:
+    cmp     r12, 1
+    jle     invalid_base
+    pop     rbx
+    jmp     valid_base
 
+invalid_base:
+    mov     rax, 0
+    pop     rbx
+    jmp     epilog
 
+; epilog push rbx r12
 ft_atoi_base:
 
-    mov eax, 21474836
-    add eax, 1
-    jo  overflow
-    mov rax, 1
+    push    rbx
+    push    r12
+    mov     rbx, rsi
+    jmp     get_base_len
+
+valid_base:
+
+    mov     rax, r12
+
+epilog:
+    pop r12
+    pop rbx
     ret
 
-overflow:
-
-    ret
 
 ; ft_atoi_base(nptr, base) {
 ;   int len = check_base_len(base);

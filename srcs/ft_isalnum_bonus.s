@@ -36,3 +36,4 @@ alnum:
 
 not_alnum:
     xor rax, rax ; char is not alnum so return 0
+    ret

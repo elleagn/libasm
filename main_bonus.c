@@ -1,5 +1,5 @@
 #include "libasm.h"
 
 int main() {
-    printf("%i", ft_atoi_base("de","dw"));
+    printf("%i\n", ft_atoi_base("de","dfghj"));
 }
