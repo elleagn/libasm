@@ -24,16 +24,22 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME) test
+	rm -f $(NAME) test test_bonus
 
 re: fclean all
 
 test: re
 	clang -Wall -Werror -Wextra -c main.c -o objects/main.o
-	clang $(OBJ) $(OBJ_DIR)/main.o -o test
+	clang $(OBJ_DIR)/main.o $(NAME) -o test
 	./test
 
-bonus: all $(BONUS_OBJ)
-	ar -rs $(NAME) $(BONUS_OBJ)
+bonus: $(OBJ) $(BONUS_OBJ)
+	ar -rs $(NAME) $(BONUS_OBJ) $(OBJ)
+
+test_bonus: bonus
+	clang -Wall -Werror -Wextra -c main_bonus.c -o objects/main_bonus.o
+	clang $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
+	./test_bonus
+
 
 .PHONY: all clean fclean re test valgrind
