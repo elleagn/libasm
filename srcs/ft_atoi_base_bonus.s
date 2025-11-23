@@ -31,8 +31,13 @@ find_in_base:                 ; find_index(str, char, strlen)
     mov rax, rsi             ; move the char into al for comparison
     mov rcx, rdx            ; length on the string in the counter
     repne scasb             ; scan string until al is found or rcx = 0
+    jnz     not_found
     mov     rax, rdx        ; mouv the string length into rax
     sub     rax, rcx        ; rcx was decremented so we need to substract it to get the index
+    ret
+
+not_found:
+    mov rax, -1
     ret
 
 ; Determines the base length
@@ -59,7 +64,7 @@ while_base:
     call    find_in_base
     cld
     pop     rcx
-    cmp     rax, rcx
+    cmp     rax, -1
     jnz     invalid_base
 
     jmp     while_base
