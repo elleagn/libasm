@@ -51,6 +51,7 @@ while_base:
     jz     invalid_base
     mov     rdi, rbx
     inc     rbx
+    inc     rcx
     push    rcx
     movsx   rsi, byte [rbx]
     mov     rdx, rcx
@@ -60,7 +61,6 @@ while_base:
     pop     rcx
     cmp     rax, rcx
     jnz     invalid_base
-    inc     rcx
 
     jmp     while_base
 
