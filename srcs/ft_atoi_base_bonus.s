@@ -32,34 +32,48 @@ find_in_base:                 ; find_index(str, char, strlen)
     mov rcx, rdx            ; length on the string in the counter
     repne scasb             ; scan string until al is found or rcx = 0
     mov     rax, rdx        ; mouv the string length into rax
-    sub     rdx, rcx        ; rcx was decremented so we need to substract it to get the index
+    sub     rax, rcx        ; rcx was decremented so we need to substract it to get the index
     ret
 
 ; Determines the base length
 ; If the base is invalid it returns 0
 get_base_len:          ; size_t check_base_len(char *base)
+    push    rbx
     xor     rcx, rcx
-    mov     rdi, rsi
+    mov     rbx, rdi
 
 while_base:
-    cmp     byte [rsi], 0
+    cmp     byte [rbx], 0
     jz      end_base
-    mov     dil, byte [rsi]
+    mov     dil, byte [rbx]
     call    ft_isalnum
     cmp     rax, 0
     jz     invalid_base
+    mov     rdi, rbx
+    inc     rbx
+    push    rcx
+    mov     sil, byte [rbx]
+    mov     rdx, rcx
+    std
+    call    find_in_base
+    cld
+    pop     rcx
+    cmp     rax, rcx
+    jnz     invalid_base
     inc     rcx
-    inc     rsi
+
     jmp     while_base
 
 end_base:
     cmp     rcx, 1
     mov     rax, rcx
     jle     invalid_base
+    pop rbx
     ret
 
 invalid_base:
     mov     rax, 0
+    pop rbx
     ret
 
 ; epilog push rbx
