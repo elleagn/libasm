@@ -27,7 +27,7 @@ extern ft_isalnum
 ; Search for a char in the given string and returns its index
 ; If the char isn't found it retruns strlen(str)
 
-find_index:                 ; find_index(str, char, strlen)
+find_in_base:                 ; find_index(str, char, strlen)
     mov al, sil             ; move the char into al for comparison
     mov rcx, rdx            ; length on the string in the counter
     repne scasb             ; scan string until al is found or rcx = 0
@@ -38,46 +38,45 @@ find_index:                 ; find_index(str, char, strlen)
 ; Determines the base length
 ; If the base is invalid it returns 0
 get_base_len:          ; size_t check_base_len(char *base)
-    push    rbx
-    xor     r12, r12
-    xor     rax, rax
+    xor     rcx, rcx
+    mov     rdi, rsi
 
 while_base:
-    cmp     byte [rbx], 0
+    cmp     byte [rsi], 0
     jz      end_base
-    mov     dil, byte [rbx]
+    mov     dil, byte [rsi]
     call    ft_isalnum
     cmp     rax, 0
     jz     invalid_base
-    inc     r12
-    inc     rbx
+    inc     rcx
+    inc     rsi
     jmp     while_base
 
 end_base:
-    cmp     r12, 1
+    cmp     rcx, 1
+    mov     rax, rcx
     jle     invalid_base
-    pop     rbx
-    jmp     valid_base
+    ret
 
 invalid_base:
     mov     rax, 0
-    pop     rbx
-    jmp     epilog
+    ret
 
-; epilog push rbx r12
+; epilog push rbx
 ft_atoi_base:
 
     push    rbx
-    push    r12
-    mov     rbx, rsi
-    jmp     get_base_len
+    push    rdi
+    push    rsi
+    mov     rdi, rsi
+    call     get_base_len
 
 valid_base:
 
-    mov     rax, r12
-
 epilog:
-    pop r12
+
+    pop rsi
+    pop rdi
     pop rbx
     ret
 
