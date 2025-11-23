@@ -28,7 +28,7 @@ extern ft_isalnum
 ; If the char isn't found it retruns strlen(str)
 
 find_in_base:                 ; find_index(str, char, strlen)
-    mov al, sil             ; move the char into al for comparison
+    mov rax, rsi             ; move the char into al for comparison
     mov rcx, rdx            ; length on the string in the counter
     repne scasb             ; scan string until al is found or rcx = 0
     mov     rax, rdx        ; mouv the string length into rax
@@ -45,14 +45,14 @@ get_base_len:          ; size_t check_base_len(char *base)
 while_base:
     cmp     byte [rbx], 0
     jz      end_base
-    mov     dil, byte [rbx]
+    movsx   rdi, byte [rbx]
     call    ft_isalnum
     cmp     rax, 0
     jz     invalid_base
     mov     rdi, rbx
     inc     rbx
     push    rcx
-    mov     sil, byte [rbx]
+    movsx   rsi, byte [rbx]
     mov     rdx, rcx
     std
     call    find_in_base
@@ -65,8 +65,8 @@ while_base:
     jmp     while_base
 
 end_base:
-    cmp     rcx, 1
     mov     rax, rcx
+    cmp     rcx, 1
     jle     invalid_base
     pop rbx
     ret
