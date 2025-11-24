@@ -113,13 +113,14 @@ while_space:
 while_convert:
 
     mov     rdi, rbx
-    mov     rsi, byte [r13]
+    movsx     rsi, byte [r13]
     mov     rdx, r12
-    call    find_index
+    call    ft_strfind
     cmp     rax, -1
     jz      handle_sign
-    mul     r15, r12
+    imul     r15, r12
     add     r15, rax
+    inc     r13
     jmp    while_convert
 
 handle_sign:
