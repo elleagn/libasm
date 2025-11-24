@@ -27,7 +27,7 @@ ft_strdup:
     mov         [rsp + 8], rdi      ; save the string address
     call        ft_strlen           ; get the string length
     mov         rdi, rax            ; copy the string size in rdi for malloc's first arg
-    inc         rax                 ; add space for the terminating null byte
+    inc         rdi                 ; add space for the terminating null byte
 
 ;   Allocating space with malloc
 

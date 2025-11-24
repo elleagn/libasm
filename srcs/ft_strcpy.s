@@ -22,7 +22,6 @@ while:
     inc     rsi                 ; increment the pointers
     cmp     al, 0               ; compare of the character with 0
     jnz     while               ; restart from while if zf != 1
-    mov     [rdi], byte 0        ; terminating null byte
 
     pop rax                     ; pop and return rdi
     ret                         ; finish function
