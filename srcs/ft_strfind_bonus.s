@@ -24,6 +24,7 @@ ft_strfind:
 
     mov     rax, rdx    ; mouv the string length into rax
     sub     rax, rcx    ; rcx was decremented so we need to substract it to get the index
+    dec     rax         ; it's the rax-th letter so we need index = rax - 1
     ret
 
 not_found:

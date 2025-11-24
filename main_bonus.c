@@ -74,11 +74,27 @@ void    test_base_validation() {
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
+    printf("\n");
+}
+
+void test_convert() {
+    int res;
+
+    printf("Part 2: Simple conversions (base 10)\n");
+    printf("\"42\": ");
+    res = ft_atoi_base("42", "0123456789");
+    if (res == atoi("42"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+    printf("\n");
+
 }
 
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
     test_base_validation();
+    test_convert();
 
 }
