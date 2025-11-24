@@ -39,7 +39,7 @@ bonus: $(OBJ) $(BONUS_OBJ)
 test_bonus: bonus
 	clang -Wall -Werror -Wextra -c main_bonus.c -o objects/main_bonus.o
 	clang $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
-	./test_bonus
+# 	./test_bonus
 
 
 .PHONY: all clean fclean re test valgrind

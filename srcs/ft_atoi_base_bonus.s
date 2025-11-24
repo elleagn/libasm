@@ -144,10 +144,12 @@ determine_sign:
     cmp     rdi, 43
     jnz     while_convert
     inc     r13
+    jmp     while_convert
 
 negative:
     mov     r14, 1
     inc     r13
+    jmp     while_convert
 ; ft_atoi_base(nptr, base) {
 ;   int len = check_base_len(base);
 ;   if (0)

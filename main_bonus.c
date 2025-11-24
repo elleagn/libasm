@@ -87,7 +87,35 @@ void test_convert() {
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
-    printf("\n");
+ 
+    printf("\"0\": ");
+    res = ft_atoi_base("0", "0123456789");
+    if (res == atoi("0"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+ 
+    printf("\"-42\": ");
+    res = ft_atoi_base("-42", "0123456789");
+    if (res == atoi("-42"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+ 
+    printf("\"2147483647\": ");
+    res = ft_atoi_base("2147483647", "0123456789");
+    if (res == atoi("2147483647"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+ 
+    printf("\"-2147483648\": ");
+    res = ft_atoi_base("-2147483648", "0123456789");
+    if (res == atoi("-2147483648"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+ 
 
 }
 
