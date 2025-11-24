@@ -83,23 +83,70 @@ invalid_base:
 ft_atoi_base:
 
     push    rbx
-    push    r12         ; save r12 to store base length
-    mov     rsi, rbx    ; save the base
+    push    r12             ; save r12 to store base length
+    push    r13             ; save r13 to store the number pointer
+    push    r14             ; save r14 for the sign
+    push    r15             ; save r15 for the result
+    mov     r13, rdi        ; save the number
+    mov     rbx, rsi        ; save the base
+    xor     r14, r14        ; default sign = +
+    xor     r15, r15        ; init the result
 
-    push    rdi         ; save the number
-    mov     rdi, rsi
-    call     get_base_len
 
-valid_base:
+;   Check if the base is valid and get its length
+    push    rdi             ; save the number
+    mov     rdi, rsi        ; base needs to be first argument
+    call    get_base_len
+    pop     rdi             ; restore rdi
+    cmp     rax, 0
+    jz      epilog          ; get_base_len returned 0 so base invalid
+    mov     r12, rax        ; mov base length to 0
+
+while_space:
+    movsx   rdi, byte [r13]
+    call    ft_isspace
+    cmp     rax, 1
+    jnz     determine_sign
+    inc     r13
+    jmp     while_space
+
+while_convert:
+
+    mov     rdi, rbx
+    mov     rsi, byte [r13]
+    mov     rdx, r12
+    call    find_index
+    cmp     rax, -1
+    jz      handle_sign
+    mul     r15, r12
+    add     r15, rax
+    jmp    while_convert
+
+handle_sign:
+    mov     rax, r15
+    cmp     r14, 1
+    jnz     epilog
+    imul    rax, -1
 
 epilog:
-
-    pop rdi
-    pop r12
-    pop rbx
+    pop     r15
+    pop     r14
+    pop     r13
+    pop     r12
+    pop     rbx
     ret
 
+determine_sign:
+    cmp     rdi, 45
+    jz      negative
+    xor     r14, r14
+    cmp     rdi, 43
+    jnz     while_convert
+    inc     r13
 
+negative:
+    mov     r14, 1
+    inc     r13
 ; ft_atoi_base(nptr, base) {
 ;   int len = check_base_len(base);
 ;   if (0)

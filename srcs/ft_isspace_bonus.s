@@ -24,5 +24,5 @@ ft_isspace:
     ret
 
 not_space:
-    mov rax, 1  ; return 0 if one of the conditions was met
+    mov rax, 0  ; return 0 if one of the conditions was met
     ret
