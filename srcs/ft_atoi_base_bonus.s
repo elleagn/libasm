@@ -13,8 +13,8 @@ global ft_atoi_base
 
 extern ft_strlen
 extern ft_isspace
-extern ft_write
 extern ft_isalnum
+extern ft_strfind
 
 ; --> base in rbx
 ; --> nptr idk
@@ -27,23 +27,13 @@ extern ft_isalnum
 ; Search for a char in the given string and returns its index
 ; If the char isn't found it retruns strlen(str)
 
-find_in_base:                 ; find_index(str, char, strlen)
-    mov rax, rsi             ; move the char into al for comparison
-    mov rcx, rdx            ; length on the string in the counter
-    repne scasb             ; scan string until al is found or rcx = 0
-    jnz     not_found
-    mov     rax, rdx        ; mouv the string length into rax
-    sub     rax, rcx        ; rcx was decremented so we need to substract it to get the index
-    ret
 
-not_found:
-    mov rax, -1
-    ret
 
 ; Determines the base length
 ; If the base is invalid it returns 0
-get_base_len:          ; size_t check_base_len(char *base)
-    push    rbx
+get_base_len:
+
+    push    rbx         ; saves rbx so we can us
     xor     rcx, rcx
     mov     rbx, rdi
 
@@ -61,7 +51,7 @@ while_base:
     movsx   rsi, byte [rbx]
     mov     rdx, rcx
     std
-    call    find_in_base
+    call    ft_strfind
     cld
     pop     rcx
     cmp     rax, -1
