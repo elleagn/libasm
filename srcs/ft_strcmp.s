@@ -12,14 +12,6 @@ segment .text
 
 global  ft_strcmp
 
-my_cmpsb:
-    mov cl, byte [rdi]
-    mov dl, byte [rsi]
-    inc     rsi
-    inc     rdi
-    cmp     dl, cl
-
-
 ft_strcmp:
 
     xor eax, eax

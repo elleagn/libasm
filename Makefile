@@ -2,7 +2,8 @@ NAME = libasm.a
 ASM = nasm
 ASMFLAGS = -f elf64
 SRC_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
-BONUS_FILES = ft_atoi_base_bonus.s ft_isalnum_bonus.s ft_isspace_bonus.s ft_strfind_bonus.s
+BONUS_FILES = 	ft_atoi_base_bonus.s ft_isalnum_bonus.s ft_isspace_bonus.s ft_strfind_bonus.s \
+				ft_list_push_front.s
 OBJ_DIR = objects
 OBJ = $(SRC_FILES:%.s=$(OBJ_DIR)/%.o)
 BONUS_OBJ = $(BONUS_FILES:%.s=$(OBJ_DIR)/%.o)
@@ -40,6 +41,3 @@ test_bonus: bonus
 	clang -Wall -Werror -Wextra -c main_bonus.c -o objects/main_bonus.o
 	clang $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
 	./test_bonus
-
-
-.PHONY: all clean fclean re test valgrind
