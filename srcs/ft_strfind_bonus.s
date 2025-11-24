@@ -17,6 +17,8 @@ global ft_strfind
 ft_strfind:
     mov rax, rsi        ; move the char into al for comparison
     mov rcx, rdx        ; length of the string in the counter (to be decremented with rep)
+    cmp rcx, 0          ; check if the string is empty
+    jz  not_found
     repne scasb         ; scan [rsi] until al is found or rcx = 0
     jnz     not_found   ; check if the last comparison was == or !=
 
@@ -25,5 +27,5 @@ ft_strfind:
     ret
 
 not_found:
-    mov rax, -1         ; return -1 if char wan't found
+    mov rax, -1         ; return -1 (or size_t max) if char wan't found
     ret

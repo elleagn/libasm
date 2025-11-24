@@ -30,5 +30,6 @@ extern int      ft_write(int fd, const void *buf, size_t count);
 extern size_t   ft_read(int fd, void *buf, size_t count);
 extern char     *ft_strdup(const char *s);
 extern int      ft_atoi_base(char *str, char *base);
+extern size_t   ft_strfind(char *str, char c, size_t len);
 
 #endif
