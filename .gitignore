@@ -4,3 +4,4 @@ test
 *.out
 valid_file
 test_bonus
+.vscode
