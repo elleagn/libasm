@@ -146,11 +146,39 @@ void test_bases() {
     printf("\n");
 }
 
+void test_symbols() {
+    int res;
+
+    printf("Part 4: Test non alnum characters\n");
+    printf("Whitespaces: ");
+    res = ft_atoi_base("  \n \t   +42", "0123456789");
+    if (res == atoi("   \t  \n+42"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("Symbols before: ");
+    res = ft_atoi_base("wertyui0", "0123456789");
+    if (res == atoi("wertyui0"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("Symbols after: ");
+    res = ft_atoi_base("-4frghfg2", "0123456789");
+    if (res == atoi("-4frghfg2"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+    printf("\n");
+}
+
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
     test_base_validation();
     test_simple();
     test_bases();
+    test_symbols();
 
 }

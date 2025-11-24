@@ -105,8 +105,8 @@ ft_atoi_base:
 while_space:
     movsx   rdi, byte [r13]
     call    ft_isspace
-    cmp     rax, 1
-    jnz     determine_sign
+    cmp     rax, 0
+    jz     determine_sign
     inc     r13
     jmp     while_space
 
