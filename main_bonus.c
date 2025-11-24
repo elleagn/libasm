@@ -77,52 +77,80 @@ void    test_base_validation() {
     printf("\n");
 }
 
-void test_convert() {
+void test_simple() {
     int res;
 
     printf("Part 2: Simple conversions (base 10)\n");
-    printf("\"42\": ");
-    res = ft_atoi_base("42", "0123456789");
+    printf("\"+42\": ");
+    res = ft_atoi_base("+42", "0123456789");
     if (res == atoi("42"))
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
- 
+
     printf("\"0\": ");
     res = ft_atoi_base("0", "0123456789");
     if (res == atoi("0"))
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
- 
+
     printf("\"-42\": ");
     res = ft_atoi_base("-42", "0123456789");
     if (res == atoi("-42"))
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
- 
+
     printf("\"2147483647\": ");
     res = ft_atoi_base("2147483647", "0123456789");
     if (res == atoi("2147483647"))
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
- 
+
     printf("\"-2147483648\": ");
     res = ft_atoi_base("-2147483648", "0123456789");
     if (res == atoi("-2147483648"))
         printf(GREEN"OK!\n"RESET);
     else
         printf(RED"error (%i)\n"RESET, res);
- 
 
+    printf("\"21474836478 (overflow)\": ");
+    res = ft_atoi_base("21474836478", "0123456789");
+    if (res == atoi("21474836478"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("\n");
+}
+
+void test_bases() {
+    int res;
+    printf("Part 3: Different bases\n");
+    printf("\"258CE228 (hex)\": ");
+    res = ft_atoi_base("629989928", "0123456789");
+    if (res == 629989928)
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("\"1110010101001111011100000000010 (binary)\": ");
+    res = ft_atoi_base("1110010101001111011100000000010", "01");
+    if (res == 1923594242)
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
+    printf("\n");
 }
 
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
     test_base_validation();
-    test_convert();
+    test_simple();
+    test_bases();
 
 }
