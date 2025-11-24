@@ -24,18 +24,14 @@ Header and tests
 
 ## Build & test
 
-The project uses NASM and the provided `Makefile` to assemble, archive and run tests.
-
 - Build the library:
-  - Run `make` (uses [`Makefile`](Makefile))
+  - Run `make`
 
 - Run mandatory tests:
-  - `make test` — assembles, archives and runs the [`main.c`](main.c) test binary (produces `test`)
+  - `make test`
 
 - Build and run bonus tests:
-  - `make test_bonus` — assembles bonus objects and runs [`main_bonus.c`](main_bonus.c) (produces `test_bonus`)
-
-See the [`Makefile`](Makefile) for exact rules and targets.
+  - `make test_bonus`
 
 ## Usage / examples
 
