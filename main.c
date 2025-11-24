@@ -90,6 +90,13 @@ void test_strcmp() {
     else
         printf(RED"error (%i)\n"RESET, res);
 
+    printf("Test ft_strcmp(\"blbl\", \"bl\"): ");
+    res = ft_strcmp("blbl", "bl");
+    if (res == strcmp("blbl", "bl"))
+        printf(GREEN"OK!\n"RESET);
+    else
+        printf(RED"error (%i)\n"RESET, res);
+
     printf("Test ft_strcmp(\"\", \"\"): ");
     res = ft_strcmp("", "");
     if (res == strcmp("", ""))

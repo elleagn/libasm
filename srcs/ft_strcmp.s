@@ -12,14 +12,25 @@ segment .text
 
 global  ft_strcmp
 
+my_cmpsb:
+    mov cl, byte [rdi]
+    mov dl, byte [rsi]
+    inc     rsi
+    inc     rdi
+    cmp     dl, cl
+
+
 ft_strcmp:
 
     xor eax, eax
 
 while:
-    cmpsb                       ; compare the bytes + increment
+    mov cl, byte [rdi]          ; move current rdi char in cl for comparison
+    cmp     byte [rsi], cl      ; compare rsi and rdi current char
     jnz     different           ; result wan't null: strings are different
-    cmp     byte [rdi - 1], al  ; check if at the end of s1
+    inc     rsi                 ; increase pointers (before comp to not lose the result of the comparison)
+    inc     rdi
+    cmp     cl, al              ; check if at the end of s1
     jnz     while               ; continue if there are still bytes to compare
 
     ret                         ; we reached the end of s1: strings are equal
@@ -32,4 +43,3 @@ different:
 positive:
     mov eax, 1
     ret
-
