@@ -24,17 +24,18 @@ ft_split_list:
 while:
 
 ;   Move to next node one time for slow and two times for fast
-    mov rsi, [rsi + 8]
-    mov rdi, [rdi + 8]
+    mov rdi, [rdi + 8]      ; increment fast pointer
     cmp rdi, 0              ; return if fast == NULL
     jz cut_list
-    mov rdi, [rdi + 8]
+    mov rdi, [rdi + 8]      ; increment fast pointer
     cmp rdi, 0              ; return if fast == NULL
-    jz cut_list
+    mov rsi, [rsi + 8]      ; increment slow pointer
+    jnz while
+
 
 cut_list:
     mov rax, [rsi + 8]      ; put the beginning of second part in rax to return it
-    mov qword [rsi + 8], 0        ; make slow->next = null because it is the end of the new list
+    mov qword [rsi + 8], 0  ; make slow->next = null because it is the end of the new list
 
 return:
     ret
