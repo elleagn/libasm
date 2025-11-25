@@ -185,7 +185,7 @@ t_list *test_lst_push_front() {
     printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("blbl"));
     printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup(""));
+    ft_list_push_front(&lst, strdup("iris"));
     printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("myla"));
     printf("Size: %i\n", ft_list_size(lst));
@@ -201,6 +201,24 @@ t_list *test_lst_push_front() {
     return lst;
 }
 
+void test_split_lst(t_list *begin_list) {
+    t_list *middle_list = ft_split_list(begin_list);
+
+    printf("List first part: \n");
+    t_list *tmp = begin_list;
+    while (tmp) {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+
+     printf("\nList second part: \n");
+    tmp = middle_list;
+    while (tmp) {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+}
+
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
@@ -211,6 +229,7 @@ int main() {
 
     printf(CYAN"ft_list_push_front:\n\n"RESET);
     t_list *lst = test_lst_push_front();
+    test_split_lst(lst);
     t_list *tmp = lst;
     while (tmp) {
         tmp = tmp->next;
