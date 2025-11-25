@@ -173,12 +173,23 @@ void test_symbols() {
     printf("\n");
 }
 
-void test_lst_push_front() {
+t_list *test_lst_push_front() {
     t_list  *lst = NULL;
 
+    ft_list_push_front(&lst, strdup("epiphanie"));
+    ft_list_push_front(&lst, strdup("dinosaure"));
+    ft_list_push_front(&lst, strdup("patate"));
     ft_list_push_front(&lst, strdup("blbl"));
+    ft_list_push_front(&lst, strdup(""));
+    ft_list_push_front(&lst, strdup("myla"));
+    ft_list_push_front(&lst, strdup("firfir"));
 
-    printf("%s\n", (char *)lst->data);
+    t_list *tmp = lst;
+    while (tmp) {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+    return lst;
 }
 
 int main() {
@@ -190,6 +201,14 @@ int main() {
     test_symbols();
 
     printf(CYAN"ft_list_push_front:\n\n"RESET);
-    test_lst_push_front();
+    t_list *lst = test_lst_push_front();
+    t_list *tmp = lst;
+    while (tmp) {
+        tmp = tmp->next;
+        free(lst->data);
+        free(lst);
+        lst = tmp;
+    }
+    printf("\n");
 
 }
