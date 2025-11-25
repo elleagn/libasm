@@ -173,6 +173,14 @@ void test_symbols() {
     printf("\n");
 }
 
+void test_lst_push_front() {
+    t_list  *lst = NULL;
+
+    ft_list_push_front(&lst, strdup("blbl"));
+
+    printf("%s\n", (char *)lst->data);
+}
+
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
@@ -180,5 +188,8 @@ int main() {
     test_simple();
     test_bases();
     test_symbols();
+
+    printf(CYAN"ft_list_push_front:\n\n"RESET);
+    test_lst_push_front();
 
 }

@@ -17,16 +17,18 @@
 segment .text
 
 extern  malloc
+global ft_list_push_front
 
 ft_list_push_front:
 
     push    rbp                 ; save the base stack pointer
     mov     rbp, rsp            ; pointer to the new stack base
-    add     rsp, 32             ; create a stack frame
+    sub     rsp, 32             ; create a stack frame
 
-    mov     rdi, [rsp + 24]     ; save the double pointer to the list so we can update it
-    mov     rsi, [rsp + 16]     ; save the pointer to the data
+    mov     [rsp + 24], rdi     ; save the double pointer to the list so we can update it
+    mov     [rsp + 16], rsi     ; save the pointer to the data
 
+stack_frame:
     mov     rdi, 16             ; give the size of a list element (16) as an argument to malloc
     call    malloc wrt ..plt    ; allocate space for the new element
     cmp     rax, 0              ; check for error (ie malloc returns null)
@@ -41,6 +43,6 @@ ft_list_push_front:
     mov     [rdi], rax          ; put the new first element address in the first argument
 
 epilog:
-    sub rsp, 32                 ; clear the stack frame
+    add rsp, 32                 ; clear the stack frame
     pop rbp                     ; restore base pointer
     ret
