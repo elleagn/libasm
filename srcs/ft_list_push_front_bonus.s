@@ -25,6 +25,8 @@ ft_list_push_front:
     mov     rbp, rsp            ; pointer to the new stack base
     sub     rsp, 32             ; create a stack frame
 
+    cmp     rdi, 0              ; check if the first argument is NULL
+    jz      epilog              ; if the first argument is null we cant add first element
     mov     [rsp + 24], rdi     ; save the double pointer to the list so we can update it
     mov     [rsp + 16], rsi     ; save the pointer to the data
 

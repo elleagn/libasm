@@ -176,13 +176,22 @@ void test_symbols() {
 t_list *test_lst_push_front() {
     t_list  *lst = NULL;
 
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("epiphanie"));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("dinosaure"));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("patate"));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("blbl"));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup(""));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("myla"));
+    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("firfir"));
+    printf("Size: %i\n", ft_list_size(lst));
+    printf("\n");
 
     t_list *tmp = lst;
     while (tmp) {
