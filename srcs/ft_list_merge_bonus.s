@@ -10,9 +10,9 @@
 
 segment .text
 
-global ft_merge_lists
+global ft_list_merge
 
-ft_merge_lists:
+ft_list_merge:
 
 ;   Save the callee saved registers on the stack to store my variables instead
     push    rbx             ; base_lst
@@ -40,21 +40,43 @@ ft_merge_lists:
 
 
 ;   If first element of base_lst > first element of base_lst
-    mov     rdi, [r12 + 8]  ; base_list data as first argument
-    mov     rsi, [r13 + 8]  ; merge_list data as second argument
+    mov     rdi, [r12]      ; base_list data as first argument
+    mov     rsi, [r13]      ; merge_list data as second argument
     call    r14             ; call the comparison function
-    cmp     rax, 0
-    jg      insert_beginning
+    cmp     eax, 0
+    jg      insert_beginning    ; if merge_list < base_list insert it at the beginning
 
 while:
+    cmp     dword [r12 + 8], 0    ; check if we reached the end of first list
+    jz      insert_end
+
+;   Compare base_lst->next->data to merge_list->data
+    mov     rdi, [r12 + 8]
+    mov     rdi, [rdi]      ; put data in first argument
+    mov     rsi, [r13]      ; put merge_list data in second argument
+    call    r14
+    cmp     eax, 0
+    jns     insert_middle   ; if merge_list node is smaller than base_list's next, insert it here
+    mov     r12, [r12 + 8]  ; increment base_list
+    jmp     while
+
+insert_middle:
+
+    mov     rdi, [r12 + 8]  ; save the second node of base_lst
+    mov     [r12 + 8], r13  ; insert merge list as next node
+    mov     r12, r13        ; head of merge list is the new base_list current node
+    mov     r13, [r13 + 8]  ; increment merge_lst
+    mov     [r12 + 8], rdi  ; append the end of base_list
     cmp     r13, 0          ; check if we reached the end of merged list
-    jz      epilog          ; nothing left to do
+    jnz     while
+
 
 epilog:                     ; Restore the callee-saved registers
     pop     r14
     pop     r13
     pop     r12
     pop     rbx
+    ret
 
 base_lst_empty:
 
@@ -68,3 +90,7 @@ insert_beginning:
     mov     r12, rdi        ; new base_lst current node
     mov     [rbx], rdi      ; make base_lst point to element saved
     jmp     while
+
+insert_end:
+    mov     [r12 + 8], r13  ; make last element of base_list point to merge_list
+    jmp      epilog

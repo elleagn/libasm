@@ -177,19 +177,22 @@ t_list *test_lst_push_front() {
     t_list  *lst = NULL;
 
     printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("epiphanie"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("dinosaure"));
-    printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("patate"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("blbl"));
     printf("Size: %i\n", ft_list_size(lst));
     ft_list_push_front(&lst, strdup("iris"));
     printf("Size: %i\n", ft_list_size(lst));
+    ft_list_push_front(&lst, strdup("firfir"));
+    printf("Size: %i\n", ft_list_size(lst));
+    ft_list_push_front(&lst, strdup("epiphanie"));
+    printf("Size: %i\n", ft_list_size(lst));
+
     ft_list_push_front(&lst, strdup("myla"));
     printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("firfir"));
+    ft_list_push_front(&lst, strdup("koala"));
+    printf("Size: %i\n", ft_list_size(lst));
+    ft_list_push_front(&lst, strdup("dinosaure"));
+    printf("Size: %i\n", ft_list_size(lst));
+    ft_list_push_front(&lst, strdup("blbl"));
     printf("Size: %i\n", ft_list_size(lst));
     printf("\n");
 
@@ -213,6 +216,14 @@ void test_split_lst(t_list *begin_list) {
 
      printf("\nList second part: \n");
     tmp = middle_list;
+    while (tmp) {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+
+    printf("Merged: \n");
+    ft_list_merge(&begin_list, middle_list, strcmp);
+    tmp = begin_list;
     while (tmp) {
         printf("%s\n", (char *)tmp->data);
         tmp = tmp->next;
