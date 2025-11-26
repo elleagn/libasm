@@ -221,7 +221,7 @@ void test_split_lst(t_list *begin_list) {
         tmp = tmp->next;
     }
 
-    printf("Merged: \n");
+    printf("\nMerged: \n");
     ft_list_merge(&begin_list, middle_list, strcmp);
     tmp = begin_list;
     while (tmp) {

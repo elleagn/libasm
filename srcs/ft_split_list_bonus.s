@@ -29,6 +29,7 @@ while:
     jz cut_list
     mov rdi, [rdi + 8]      ; increment fast pointer
     cmp rdi, 0              ; return if fast == NULL
+    jz  cut_list
     mov rsi, [rsi + 8]      ; increment slow pointer
     jnz while
 
