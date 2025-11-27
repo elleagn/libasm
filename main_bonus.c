@@ -199,7 +199,7 @@ t_list *test_lst_push_front() {
 void test_sort(t_list *begin_list) {
 
      printf("List sorted: ");
-    ft_list_sort(&begin_list, strcmp);
+    ft_list_sort(&begin_list, ft_strcmp);
     t_list *tmp = begin_list;
     while (tmp) {
         printf("%s ", (char *)tmp->data);
@@ -211,7 +211,7 @@ void test_sort(t_list *begin_list) {
 void test_remove(t_list *lst) {
 
     printf("List removed: ");
-    ft_list_remove_if(&lst, "football", strcmp, free);
+    ft_list_remove_if(&lst, "football", ft_strcmp, free);
     t_list *tmp = lst;
     while (tmp) {
         printf("%s ", (char *)tmp->data);
