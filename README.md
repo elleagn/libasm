@@ -16,6 +16,10 @@ Implemented (mandatory)
 
 Bonus implementations
 - [`ft_atoi_base`](srcs/ft_atoi_base_bonus.s)
+- [`ft_list_push_front`](srcs/ft_list_push_front_bonus.s)
+- [`ft_list_size`](srcs/ft_list_size_bonus.s)
+- [`ft_list_sort`](srcs/ft_list_sort_bonus.s)
+- [`ft_list_remove_if`](srcs/ft_list_remove_if_bonus.s)
 
 Header and tests
 - Header: [`libasm.h`](libasm.h)
@@ -45,4 +49,6 @@ Header and tests
 - String scanning with `repne scasb` as used in [`ft_strlen`](srcs/ft_strlen.s) and [`ft_strfind`](srcs/ft_strfind_bonus.s).
 - Interaction with libc (calling `malloc` from [`ft_strdup`](srcs/ft_strdup.s)).
 - Basic error handling and setting `errno` via [`__errno_location`] referenced in read/write implementations.
-- Implementing small algorithms (base validation and conversion in [`ft_atoi_base`](srcs/ft_atoi_base_bonus.s)).
+- Implementing small algorithms (base validation and conversion in [`ft_atoi_base`](srcs/ft_atoi_base_bonus.s), merge sort in [`ft_list_sort`](srcs/ft_list_sort_bonus.s)).
+- Data structure, pointers and references manipulation (linked lists)
+
