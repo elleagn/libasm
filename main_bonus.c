@@ -208,6 +208,18 @@ void test_sort(t_list *begin_list) {
     printf("\n");
 }
 
+void test_remove(t_list *lst) {
+
+    printf("List removed: ");
+    ft_list_remove_if(&lst, "footbal", strcmp, free);
+    t_list *tmp = lst;
+    while (tmp) {
+        printf("%s ", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
+
 int main() {
 
     printf(CYAN"\nft_atoi_base:\n\n"RESET);
@@ -219,6 +231,7 @@ int main() {
     printf(CYAN"ft_list_push_front:\n\n"RESET);
     t_list *lst = test_lst_push_front();
     test_sort(lst);
+    test_remove(lst);
     t_list *tmp = lst;
     while (tmp) {
         tmp = tmp->next;

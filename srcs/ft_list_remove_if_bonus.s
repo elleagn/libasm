@@ -67,6 +67,8 @@ while_middle:
     call    r13                 ; call cmp
     cmp     eax, 0
     jz      remove_middle       ; if comparison return 0 remove element
+    mov     r15, [r15 + 8]      ; increment list
+    jmp     while_middle
 
 epilog:                         ; restore protected registers
     pop     r15
