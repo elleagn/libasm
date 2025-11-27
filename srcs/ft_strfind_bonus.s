@@ -2,11 +2,11 @@
 ;
 ;   Finds a character in a string
 ;
-;   Input:  str - the string to search
-;           c - the char to search for
-;           len - the length of the string
+;   Input:  rdi - char *str the string to search
+;           rsi - char c char to search for
+;           rdx - size_t len the length of the string
 ;
-;   Output: the index of the character in the string or -1 if it wasn't found
+;   Output: rax - the index of the character in the string or -1 if it wasn't found
 ;
 ;   Note:   the caller can set the direction flags
 

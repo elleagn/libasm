@@ -2,11 +2,11 @@
 ;
 ;   Compare two strings
 ;
-;   Input:  s1 - the first string to compare
-;           s2 - the second string to compare
+;   Input:  rdi - char *s1 the first string to compare
+;           rsi - char *s2 the second string to compare
 ;
 ;
-;   Output: the difference between the last bytes compared
+;   Output: the difference between the last bytes compared (int)
 
 segment .text
 
@@ -17,7 +17,7 @@ ft_strcmp:
     xor eax, eax
 
 while:
-    mov     cl, byte [rdi]          ; move current rdi char in cl for comparison
+    mov     cl, byte [rdi]      ; move current rdi char in cl for comparison
     cmp     byte [rsi], cl      ; compare rsi and rdi current char
     jnz     different           ; result wan't null: strings are different
     inc     rsi                 ; increase pointers (before comp to not lose the result of the comparison)

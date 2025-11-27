@@ -2,11 +2,11 @@
 ;
 ;   Write to a file descriptor
 ;
-;   Input:  fd - file descriptor referring the file where to write
-;           buf - pointer to the source buffer
-;           count - number of bytes to write
+;   Input:  rdi - int fd file descriptor referring the file where to write
+;           rsi - char *buf pointer to the source buffer
+;           rdx - size_t count number of bytes to write
 ;
-;   Output: the number of bytes in the string pointed to by s
+;   Output: rax - the number of bytes in the string pointed to by s
 
 segment .text                               ; section that contains executable instructions
 

@@ -2,9 +2,9 @@
 ;
 ;   Calculate the length of a string
 ;
-;   Input:  s - a pointer to a string
+;   Input:  rdi - a pointer to a string
 ;
-;   Output: the number of bytes in the string pointed to by s
+;   Output: rax - the number of bytes in the string pointed to by s
 
 segment .text   ; section that contains executable instructions
 

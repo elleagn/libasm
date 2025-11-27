@@ -2,10 +2,10 @@
 ;
 ;   Convert a string to an integer
 ;
-;   Input:  nptr - the string to convert
-;           base - the base of the number represented
+;   Input:  rdi - char *nptr the string to convert
+;           rsi - char *base the base of the number represented
 ;
-;   Output: the int represented by the string
+;   Output: rax - the int represented by the string
 
 segment .text
 
@@ -16,21 +16,7 @@ extern ft_isspace
 extern ft_isalnum
 extern ft_strfind
 
-; --> base in rbx
-; --> nptr idk
 
-; Checks if a character is a whitespace, returns 1 if it is an 0 if not
-
-
-
-
-; Search for a char in the given string and returns its index
-; If the char isn't found it retruns strlen(str)
-
-
-
-; Determines the base length
-; If the base is invalid it returns 0
 get_base_len:
 
     push    rbx         ; saves rbx so we can us

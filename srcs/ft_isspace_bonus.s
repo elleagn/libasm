@@ -2,9 +2,9 @@
 ;
 ;   Checks  for white-space characters
 ;
-;   Input: the character to check
+;   Input: rdi - char c the character to check
 ;
-;   Output: 1 if the character is a whitespace character, 0 if not
+;   Output: rax - 1 if the character is a whitespace character, 0 if not
 
 segment .text
 

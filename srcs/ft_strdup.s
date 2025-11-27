@@ -2,9 +2,9 @@
 ;
 ;   Duplicate a string
 ;
-;   Input: The string to duplicate
+;   Input: rdi - char *str the string to duplicate
 ;
-;   Output: A pointer to the duplicated string, or null if an error occurred
+;   Output: rax - a pointer to the duplicated string, or null if an error occurred
 
 segment .text
 

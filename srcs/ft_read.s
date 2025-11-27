@@ -2,11 +2,11 @@
 ;
 ;   Read from a file descriptor
 ;
-;   Input:  fd - file descriptor referring the file to read from
-;           buf - pointer to the buffer to store data
-;           count - number of bytes to read
+;   Input:  rdi - int fd file descriptor referring the file to read from
+;           rsi - char *buf pointer to the buffer to store data
+;           rdx - size_t count number of bytes to read
 ;
-;   Output: the number of bytes in the string pointed to by s
+;   Output: rax - the number of bytes in the string pointed to by s
 
 segment .text                               ; section that contains executable instructions
 

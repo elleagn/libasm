@@ -174,7 +174,7 @@ void test_symbols() {
 }
 
 t_list *test_lst_push_front() {
-    char    *strs1[] = {"try", "painter", "happen", "footbal", "module", "solve", "exit", NULL};
+    char    *strs1[] = {"try", "painter", "happen", "football", "module", "solve", "exit", NULL};
     t_list  *lst = NULL;
 
     int i = 0;
@@ -228,7 +228,7 @@ int main() {
     test_bases();
     test_symbols();
 
-    printf(CYAN"ft_list_push_front:\n\n"RESET);
+    printf(CYAN"Linked lists:\n\n"RESET);
     t_list *lst = test_lst_push_front();
     test_sort(lst);
     test_remove(lst);

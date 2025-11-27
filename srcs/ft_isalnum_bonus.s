@@ -2,9 +2,9 @@
 ;
 ; Checks for an alphanumeric character
 ;
-;   Input: the character to check
+;   Input: rdi - the character to check
 ;
-;   Output: 1 if the character is an alphanumeric character, 0 if not
+;   Output: rax - 1 if the character is an alphanumeric character, 0 if not
 
 segment .text
 
