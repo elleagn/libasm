@@ -76,6 +76,7 @@ epilog:                         ; restore protected registers
     pop     r13
     pop     r12
     pop     rbx
+    ret
 
 remove_beginning:
 
