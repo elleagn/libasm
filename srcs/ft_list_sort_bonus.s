@@ -33,7 +33,7 @@ ft_list_sort:
 ; Deal with edge cases
     cmp     rdi, 0          ; NULL begin_list
     jz      epilog
-    cmp     [rdi], 0        ; empty list
+    cmp     qword [rdi], 0        ; empty list
     jz      epilog
 
 ; Store begin_list in the stack and cmp in rbx

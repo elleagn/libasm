@@ -35,7 +35,7 @@ ft_list_merge:
     mov     r12, [rdi]      ; current node of base_lst into r12
 
 ;   Case base_lst empty
-    cmp     dword [rbx], 0
+    cmp     qword [rbx], 0
     jz      base_lst_empty
 
 
@@ -47,7 +47,7 @@ ft_list_merge:
     jg      insert_beginning    ; if merge_list < base_list insert it at the beginning
 
 while:
-    cmp     dword [r12 + 8], 0    ; check if we reached the end of first list
+    cmp     qword [r12 + 8], 0    ; check if we reached the end of first list
     jz      insert_end
 
 ;   Compare base_lst->next->data to merge_list->data
@@ -89,6 +89,8 @@ insert_beginning:
     mov     [rdi + 8], r12  ; make new element -> next point to first element of base_lst
     mov     r12, rdi        ; new base_lst current node
     mov     [rbx], rdi      ; make base_lst point to element saved
+    cmp     r13, 0          ; check if we reached the end of merge_list
+    jz      epilog
     jmp     while
 
 insert_end:

@@ -174,60 +174,38 @@ void test_symbols() {
 }
 
 t_list *test_lst_push_front() {
+    char    *strs1[] = {"try", "painter", "happen", "footbal", "module", "solve", "exit", NULL};
     t_list  *lst = NULL;
 
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("patate"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("iris"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("firfir"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("epiphanie"));
-    printf("Size: %i\n", ft_list_size(lst));
+    int i = 0;
+    while (strs1[i]) {
+        ft_list_push_front(&lst, strdup(strs1[i]));
+        if (ft_list_size(lst) != i + 1) {
+            printf(RED"Error: list invalid, expected %i, got %i\n"RESET, i, ft_list_size(lst));
+        }
+        i++;
+    }
 
-    ft_list_push_front(&lst, strdup("myla"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("koala"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("dinosaure"));
-    printf("Size: %i\n", ft_list_size(lst));
-    ft_list_push_front(&lst, strdup("blbl"));
-    printf("Size: %i\n", ft_list_size(lst));
-    printf("\n");
-
+    printf("List unsorted: ");
     t_list *tmp = lst;
     while (tmp) {
-        printf("%s\n", (char *)tmp->data);
+        printf("%s ", (char *)tmp->data);
         tmp = tmp->next;
     }
+    printf("\n");
     return lst;
 }
 
-void test_split_lst(t_list *begin_list) {
-    t_list *middle_list = ft_list_split(begin_list);
+void test_sort(t_list *begin_list) {
 
-    printf("List first part: \n");
+     printf("List sorted: ");
+    ft_list_sort(&begin_list, strcmp);
     t_list *tmp = begin_list;
     while (tmp) {
-        printf("%s\n", (char *)tmp->data);
+        printf("%s ", (char *)tmp->data);
         tmp = tmp->next;
     }
-
-     printf("\nList second part: \n");
-    tmp = middle_list;
-    while (tmp) {
-        printf("%s\n", (char *)tmp->data);
-        tmp = tmp->next;
-    }
-
-    printf("\nMerged: \n");
-    ft_list_merge(&begin_list, middle_list, strcmp);
-    tmp = begin_list;
-    while (tmp) {
-        printf("%s\n", (char *)tmp->data);
-        tmp = tmp->next;
-    }
+    printf("\n");
 }
 
 int main() {
@@ -240,7 +218,7 @@ int main() {
 
     printf(CYAN"ft_list_push_front:\n\n"RESET);
     t_list *lst = test_lst_push_front();
-    test_split_lst(lst);
+    test_sort(lst);
     t_list *tmp = lst;
     while (tmp) {
         tmp = tmp->next;

@@ -1,6 +1,6 @@
 NAME = libasm.a
 ASM = nasm
-ASMFLAGS = -f elf64
+ASMFLAGS = -f elf64 -g
 SRC_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 BONUS_FILES = 	ft_atoi_base_bonus.s ft_isalnum_bonus.s ft_isspace_bonus.s ft_strfind_bonus.s \
 				ft_list_push_front_bonus.s ft_list_size_bonus.s ft_list_split_bonus.s \
@@ -31,7 +31,7 @@ fclean: clean
 re: fclean all
 
 test: re
-	clang -Wall -Werror -Wextra -c main.c -o objects/main.o
+	clang -Wall -Werror -Wextra -c -g3 main.c -o objects/main.o
 	clang $(OBJ_DIR)/main.o $(NAME) -o test
 	./test
 
@@ -39,6 +39,6 @@ bonus: $(OBJ) $(BONUS_OBJ)
 	ar -rs $(NAME) $(BONUS_OBJ) $(OBJ)
 
 test_bonus: bonus
-	clang -Wall -Werror -Wextra -c main_bonus.c -o objects/main_bonus.o
+	clang -Wall -Werror -Wextra -c -g3 main_bonus.c -o objects/main_bonus.o
 	clang $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
 # 	./test_bonus

@@ -18,7 +18,7 @@ ft_read:
     mov         rbp, rsp                    ; new base pointer
     sub         rsp, 16                     ; allocates space for local variables
 
-    mov         rax, 0                      ; read syscall number is 1
+    mov         rax, 0                      ; read syscall number is 0
     syscall                                 ; executes the syscall corresponding to eax
     xor         rcx, rcx                    ; zeroes the register for comparison
     cmp         eax, ecx                    ; test if there was an error
