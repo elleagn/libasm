@@ -205,7 +205,7 @@ t_list *test_lst_push_front() {
 }
 
 void test_split_lst(t_list *begin_list) {
-    t_list *middle_list = ft_split_list(begin_list);
+    t_list *middle_list = ft_list_split(begin_list);
 
     printf("List first part: \n");
     t_list *tmp = begin_list;

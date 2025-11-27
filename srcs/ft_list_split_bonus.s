@@ -9,11 +9,11 @@
 
 segment .text
 
-global ft_split_list
+global ft_list_split
 
 ; Use 2 pointers (fast and slow) and increment slow 1 by 1 and fast 2 by 2 until
 ; fast or fast->next is null. Return slow
-ft_split_list:
+ft_list_split:
 
     xor rax, rax            ; init rax to 0
     cmp rdi, 0              ; check if lst is NULL

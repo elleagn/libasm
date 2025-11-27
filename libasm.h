@@ -40,7 +40,7 @@ typedef struct s_list
 
 extern void     ft_list_push_front(t_list **begin_list, void *data);
 extern int      ft_list_size(t_list *begin_list);
-extern t_list   *ft_split_list(t_list *begin_list);
+extern t_list   *ft_list_split(t_list *begin_list);
 extern void     ft_list_merge(t_list **lst1,t_list *lst2, int (*cmp)());
 
 #endif
