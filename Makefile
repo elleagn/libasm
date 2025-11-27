@@ -31,14 +31,14 @@ fclean: clean
 re: fclean all
 
 test: re
-	clang -Wall -Werror -Wextra -c -g3 main.c -o objects/main.o
-	clang $(OBJ_DIR)/main.o $(NAME) -o test
+	cc -Wall -Werror -Wextra -c -g3 main.c -o objects/main.o
+	cc $(OBJ_DIR)/main.o $(NAME) -o test
 	./test
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	ar -rs $(NAME) $(BONUS_OBJ) $(OBJ)
 
 test_bonus: bonus
-	clang -Wall -Werror -Wextra -c -g3 main_bonus.c -o objects/main_bonus.o
-	clang $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
+	cc -Wall -Werror -Wextra -c -g3 main_bonus.c -o objects/main_bonus.o
+	cc $(OBJ_DIR)/main_bonus.o $(NAME) -o test_bonus
 	./test_bonus
